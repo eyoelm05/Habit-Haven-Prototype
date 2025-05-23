@@ -4,9 +4,9 @@ import random  # For random app selection
 init()  # Initialise colorama
 
 class User:
-    def __init__(self, email, password):
+    def __init__(self, username, password):
         # Initialize user with their basic info and empty collections
-        self._email = email
+        self.username = username
         self._password = password
         self.habits = []  # List to store user's habits
         self.favorite_apps = []  # Store user's favorite apps that can be locked/unlocked
