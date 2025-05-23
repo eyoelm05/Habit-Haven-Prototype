@@ -16,8 +16,15 @@ def main():
         
         # First add just 1 habit
         print("\nLet's start by adding a habit to track:")
-        habit = createHabit()
-        user.habits.append(habit)
+
+        # Ask if user wants to add more habits
+        while True:
+            habit = createHabit()
+            user.habits.append(habit)
+
+            add_more = input("\nDo you want to add another habit? (y/n): ").lower()
+            if add_more != 'y':
+                break
 
 
 def createHabit():
@@ -36,6 +43,7 @@ def createHabit():
             new_habit = Habit(habit_name, "build", "", start_date, end_date)
             print(f"Great! You've started tracking: {habit_name}")
             return new_habit
+        
         elif habit_type == "break":
             # Add a habit to break (something to stop doing)
             habit_name = input("Enter the habit you want to break: ")
