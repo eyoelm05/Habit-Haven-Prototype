@@ -25,3 +25,21 @@ class User:
             self.favorite_apps.append(app_name)
             return True
         return False
+    
+    def update_app_locks(self, completed):
+        # Update app locks based on habit completion and selected mode
+        if self.mode == "reward":
+            # In reward mode, unlock an app when user completes a goal
+            if completed:
+                if self.locked_apps:
+                    app_to_unlock = self.locked_apps.pop(0)
+                    print(f"{Fore.GREEN}App unlocked: {app_to_unlock}{Style.RESET_ALL}")
+        elif self.mode == "punishment":
+            # In punishment mode, lock an app when user fails a goal
+            if not completed and self.favorite_apps:
+                # Lock a random app
+                if len(self.locked_apps) < len(self.favorite_apps):
+                    unlocked_apps = [app for app in self.favorite_apps if app not in self.locked_apps]
+                    app_to_lock = random.choice(unlocked_apps)
+                    self.locked_apps.append(app_to_lock)
+                    print(f"{Fore.RED}App locked: {app_to_lock}{Style.RESET_ALL}")
