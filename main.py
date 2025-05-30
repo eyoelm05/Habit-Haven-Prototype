@@ -176,7 +176,8 @@ def show_menu(user):
                     user.update_app_locks(completed)
                     print(f"{Fore.GREEN}Great job! Your streak is now {habit.calculate_streak()} days.{Style.RESET_ALL}")
                 else:
-                    # Show encouragement message
+                    # Update app locks and show encouragement message
+                    user.update_app_locks(completed)
                     print(f"{Fore.YELLOW}Keep trying! Tomorrow is a new day.{Style.RESET_ALL}")
                 
                 # Show next check reminder
