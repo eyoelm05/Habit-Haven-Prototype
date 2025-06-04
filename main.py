@@ -4,7 +4,7 @@ from User import User
 from Motivation import Motivation
 from colorama import init, Fore, Style
 
-init()
+init() # Initialize colorama
 
 # Function to create and return a new habit
 def createHabit():
